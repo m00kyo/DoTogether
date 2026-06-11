@@ -1,0 +1,639 @@
+/* --- Style dla strony szczegółów wydarzenia --- */
+
+.details-container {
+    padding: 40px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    transition: transform 0.3s;
+}
+
+.back-link:hover {
+    transform: translateX(-5px);
+    color: var(--primary-color);
+}
+
+/* Wielkie zdjęcie w tle */
+.details-hero {
+    width: 100%;
+    height: 400px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 40px;
+}
+
+.details-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Układ dwukolumnowy */
+.details-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.1fr; /* Lewa strona szersza, prawa węższa */
+    gap: 48px;
+}
+
+/* --- LEWA KOLUMNA --- */
+.details-header {
+    margin-bottom: 32px;
+}
+
+.details-header h1 {
+    font-size: 40px;
+    color: var(--text-main);
+    margin-top: 12px;
+    line-height: 1.2;
+}
+
+.details-section {
+    margin-bottom: 40px;
+}
+
+.details-section h2 {
+    font-size: 20px;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.details-section p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+/* Karta Organizatora */
+.organizer-card {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background-color: #fdfbf7;
+    gap: 16px;
+}
+
+.organizer-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.org-info h3 {
+    font-size: 16px;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.org-info span {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.btn-outline-sm {
+    background: white;
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text-main);
+    transition: 0.3s;
+}
+
+.btn-outline-sm:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Lista Uczestników (Awatary nakładające się na siebie) */
+.attendees-list {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.attendee-avatar,
+.attendee-empty {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+.attendee-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.attendee-empty {
+    background-color: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    border: 2px dashed #d1c8b3;
+    box-shadow: none;
+}
+
+/* --- PRAWA KOLUMNA (KARTA AKCJI) --- */
+.details-sidebar {
+    position: relative;
+}
+
+.action-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 40px; /* Przykleja kartę 40px od góry ekranu podczas scrollowania */
+}
+
+.action-card h3 {
+    font-size: 18px;
+    color: var(--text-main);
+    margin-bottom: 24px;
+}
+
+.event-meta-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.event-meta-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.meta-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #fdfbf7;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.meta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-text strong {
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.meta-text span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Główny przycisk dołączania */
+.btn-join-event {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: var(--grad-primary-strong);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    margin-bottom: 24px;
+}
+
+.btn-join-event:hover {
+    background: var(--grad-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Przycisk opuszczenia wydarzenia */
+.btn-leave-event {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: #f87171;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    margin-bottom: 24px;
+}
+
+.btn-leave-event:hover {
+    background: #ef4444;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(239, 68, 68, 0.3);
+}
+
+/* Przycisk zablokowania */
+.btn-blocked {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: #d1d5db;
+    color: #6b7280;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: not-allowed;
+    font-family: inherit;
+    margin-bottom: 24px;
+    opacity: 0.6;
+}
+
+.btn-blocked:hover {
+    background: #d1d5db;
+}
+/* Przycisk edycji wydarzenia */
+.btn-edit-event {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px;
+    border: 2px solid #9ca3af;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #374151;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-bottom: 24px;
+}
+
+.btn-edit-event:hover {
+    border-color: #6b7280;
+    background: #f3f4f6;
+    color: #111827;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(107, 114, 128, 0.2);
+}
+/* Opcje udostępniania i zgłaszania */
+.action-card-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.btn-share,
+.btn-report {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-share:hover {
+    color: var(--primary-color);
+}
+.btn-report:hover {
+    color: #ef4444;
+}
+
+/* RECYKLING PIGUŁEK KATEGORII Z GŁÓWNEGO PLIKU */
+.card-category {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+.cat-rozrywka {
+    background-color: #0ea5e9;
+}
+
+/* RWD */
+@media (max-width: 950px) {
+    .details-grid {
+        grid-template-columns: 1fr; /* Na tabletach i telefonach jedno pod drugim */
+    }
+    .details-hero {
+        height: 300px;
+    }
+    .action-card {
+        position: static; /* Wyłącza przyklejanie na małych ekranach */
+    }
+
+    .participants {
+        margin-top: 32px;
+    }
+
+    .dash-table th,
+    .dash-table td {
+        padding: 12px 8px;
+        font-size: 12px;
+    }
+}
+/* --- POPRAWIONY WYGLĄD KARTY ORGANIZATORA --- */
+.organizer-card {
+    display: inline-flex; /* Zapobiega rozciąganiu na całą szerokość */
+    align-items: center;
+    padding: 10px 24px 10px 10px; /* Dopasowane paddingi */
+    border: 1px solid var(--border-color);
+    border-radius: 50px; /* Zaokrąglony kształt pigułki */
+    background-color: #ffffff;
+    box-shadow: var(--shadow-sm);
+    gap: 16px;
+    width: fit-content !important;
+}
+
+.org-avatar-placeholder {
+    width: 44px;
+    height: 44px;
+    background: var(--grad-primary-strong);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.org-info h3 {
+    font-size: 16px;
+    color: var(--text-main);
+    margin: 0 0 2px 0;
+    font-weight: 700;
+}
+
+.org-info span {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- NOWA TEKSTOWA LISTA UCZESTNIKÓW --- */
+.attendees-text-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.attendees-text-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 15px;
+    color: var(--text-main);
+    font-weight: 600;
+    padding: 12px 16px;
+    background: #fdfbf7;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition:
+        transform 0.2s,
+        border-color 0.2s;
+}
+
+.attendees-text-list li:hover {
+    transform: translateX(4px); /* Delikatny efekt przesunięcia po najechaniu */
+    border-color: var(--primary-color);
+}
+
+.attendee-icon {
+    width: 32px;
+    height: 32px;
+    background: #e0f2fe;
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+/* --- LICZNIK UCZESTNIKÓW --- */
+.attendees-counter-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 24px 12px 12px;
+    background: #fdfbf7;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    width: fit-content;
+    box-shadow: var(--shadow-sm);
+}
+
+.counter-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--grad-secondary-strong);
+    color: var(--text-main);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(245, 166, 35, 0.2);
+}
+
+.counter-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.counter-text .count {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.counter-text .label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- SEKCJA UCZESTNIKÓW Z TABELĄ --- */
+.participants {
+    margin-top: 48px;
+    padding: 0;
+}
+
+.participants h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 24px;
+}
+
+/* Stylowanie tabeli uczestników */
+.participants .dash-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.participants .dash-table th {
+    text-align: left;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.participants .dash-table td {
+    padding: 16px 12px;
+    font-size: 14px;
+    color: var(--text-main);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+/* Pierwsza kolumna (ikona) - zminimalizowana */
+.participants .dash-table th:first-child,
+.participants .dash-table td:first-child {
+    width: 30px;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+
+/* Kolumna z przyciskiem - wyrównana do prawej */
+.participants .dash-table th:last-child,
+.participants .dash-table td:last-child {
+    text-align: right;
+    padding-right: 0;
+}
+
+/* Sztywna blokada łamania tekstu dla Daty, Statusu i Akcji */
+.participants .dash-table td:nth-child(3),
+.participants .dash-table td:nth-child(4),
+.participants .dash-table td:nth-child(5) {
+    white-space: nowrap;
+}
+
+/* Kolumna z nickiem (bold) */
+.participants .dash-table .bold {
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* Przycisk akcji w tabeli */
+.participants .btn-table-action {
+    background: #fee2e2;
+    color: #ef4444;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.participants .btn-table-action:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* Status badge'i */
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.status-badge.status-confirmed {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-badge.status-waitlisted {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+/* Stylowanie dla tabeli "Zrezygnowali" */
+.participants .dash-table td:nth-child(4) {
+    white-space: normal;
+    max-width: 300px;
+    word-wrap: break-word;
+}
+
+/* Ikonka reportowania użytkownika */
+.btn-report-icon {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+}
+
+.btn-report-icon:hover {
+    opacity: 1;
+    transform: scale(1.2);
+    color: #dc2626;
+}

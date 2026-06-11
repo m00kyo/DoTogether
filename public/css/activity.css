@@ -1,0 +1,321 @@
+/* --- Style dla strony dodawania aktywności --- */
+
+.add-activity-container {
+    padding: 60px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-header h1 {
+    font-size: 36px;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.form-header p {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+/* Karta formularza */
+.activity-form {
+    background: var(--bg-app);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+}
+
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Układ dwukolumnowy dla szerszych ekranów */
+@media (min-width: 850px) {
+    .form-grid {
+        flex-direction: row;
+    }
+    .main-info {
+        flex: 1.2;
+    }
+    .logistics-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.row .input-field {
+    flex: 1;
+}
+
+/* Stylowanie kontenerów pól wprowadzania */
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.input-field input,
+.input-field textarea,
+.input-field select {
+    padding: 14px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    color: var(--text-main);
+    outline: none;
+    background-color: #ffffff;
+    transition: border-color 0.3s;
+    width: 100%;
+}
+
+.input-field input:focus,
+.input-field textarea:focus,
+.input-field select:focus {
+    border-color: var(--primary-color);
+}
+
+/* Stylowanie rozwijanej listy select (własna strzałka) */
+.input-field select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23253e57' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+.input-field textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    margin-top: 12px;
+}
+
+/* Przycisk zapisu (wykorzystujący turkusowy gradient) */
+.btn-submit-activity {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: var(--grad-primary-strong);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.btn-submit-activity:hover {
+    background: var(--grad-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Responsywność dla smartfonów */
+@media (max-width: 600px) {
+    .add-activity-container {
+        padding: 40px 20px;
+    }
+    .activity-form {
+        padding: 24px;
+    }
+    .row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+.filters-section {
+    margin-top: 40px;
+}
+.listings-header {
+    margin-bottom: 32px;
+    color: var(--text-main);
+    font-size: 24px;
+    font-weight: 700;
+}
+.location-container {
+    position: relative;
+    input {
+        width: 100%;
+    }
+}
+.autocomplete_loc {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    .autocomplete-option {
+        padding: 10px 16px;
+        cursor: pointer;
+        &:hover {
+            background: var(--bg-hover);
+        }
+    }
+}
+/* --- IDEALNA KARTA WYDARZENIA --- */
+
+/* Główny kontener karty */
+.card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(37, 62, 87, 0.05); /* Miękki, nowoczesny cień */
+    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(37, 62, 87, 0.1);
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Wypycha stopkę na dół */
+}
+
+/* 1. Data i Lokalizacja (Siatka odporna na długi tekst) */
+.card-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: flex-start; /* Zatrzymuje ikonę na górze, gdy tekst schodzi niżej */
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.meta-item i {
+    flex-shrink: 0; /* ZABEZPIECZENIE: Ikona NIGDY nie zostanie zgnieciona przez tekst */
+    margin-top: 2px;
+    color: var(--accent-blue); /* Lepszy kolor dla ikon logistycznych */
+}
+
+.meta-item span {
+    word-wrap: break-word;
+}
+
+/* 2. Tytuł */
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+}
+
+/* 3. Dystans i Kategoria */
+.card-subtitle-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: auto; /* Wypycha resztę zawartości (stopkę) na dół */
+    padding-bottom: 16px;
+}
+
+.card-distance {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.card-category {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px; /* Idealna pigułka */
+    color: white;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* 4. Stopka (Miejsca i Przycisk) */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.spots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.btn-more {
+    background: var(--grad-secondary-strong);
+    color: var(--text-main);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(245, 166, 35, 0.2);
+}
+
+.btn-more:hover {
+    background: var(--grad-secondary-hover);
+    transform: translateY(-2px);
+}
