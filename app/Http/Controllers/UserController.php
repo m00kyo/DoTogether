@@ -16,14 +16,15 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
+        $user = auth()->user();
+
         $request->validate([
-            'nickname' => 'required|string|max:255|unique:users,nickname',
+            'nickname' => 'required|string|max:255|unique:users,nickname,'.$user->id,
             'email' => 'required|email|max:255',
             'date_of_birth' => 'required|date',
             'bio' => 'nullable|string|max:1000',
         ]);
 
-        $user = auth()->user();
         $user->nickname = $request->nickname;
         $user->email = $request->email;
         $user->date_of_birth = $request->date_of_birth;

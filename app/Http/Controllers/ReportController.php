@@ -100,8 +100,14 @@ class ReportController extends Controller
     public function resolve_user_report($id, Request $request)
     {
         $report_to_resolve = UserReport::findOrFail($id);
-        $report_to_resolve->reported->delete();
+        $user_to_delete = $report_to_resolve->reported;
+
+        $user_to_delete->participations()->where('status', 'CONFIRMED')->each(
+            fn ($p) => $p->delete()
+        );
+
         $report_to_resolve->delete();
+        $user_to_delete->delete();
 
         return redirect()->route('profile.user_reports');
     }

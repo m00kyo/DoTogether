@@ -75,7 +75,7 @@
 
                     <div class="form-group">
                         <label for="description">Opis</label>
-                        <textarea id="description" name="description" rows="5"
+                        <textarea id="description" name="bio" rows="5"
                             placeholder="Napisz kilka słów o sobie, swoich zainteresowaniach, co lubisz robić w wolnym czasie...">{{ old('bio', Auth::user()->bio ?? '') }}</textarea>
                     </div>
 

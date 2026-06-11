@@ -73,7 +73,12 @@
                                 @forelse ($activities as $activity)
                                     <tr>
                                         <td><i class="fa-solid fa-check" style="color: #10b981"></i></td>
-                                        <td>{{ $activity->title }}</td>
+                                        <td>
+                                            <a href="{{ route('activities.details', ['id' => $activity->id]) }}"
+                                                style="text-decoration: none; color: inherit;">
+                                                {{ $activity->title }}
+                                            </a>
+                                        </td>
                                         <td>{{ \Carbon\Carbon::parse($activity->event_date)->locale('pl')->translatedFormat('d F Y') }}
                                         </td>
                                         <td>

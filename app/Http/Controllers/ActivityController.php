@@ -108,6 +108,8 @@ class ActivityController extends Controller
         $participants = $activity->participations()
             ->with('user')
             ->whereIn('status', ['CONFIRMED', 'WAITLISTED'])
+            ->orderBy('status', 'ASC')
+            ->orderBy('created_at', 'ASC')
             ->get();
 
         $cancelled_participants = $activity->participations()
@@ -199,6 +201,12 @@ class ActivityController extends Controller
             'required_age' => $request->input('required_age') == 'NO_RESTRICTION' ? null : $request->input('required_age'),
             'location' => $request->input('location'),
             'creator_id' => Auth::id(),
+        ]);
+
+        Participation::create([
+            'user_id' => Auth::id(),
+            'activity_id' => $new_activity->id,
+            'status' => 'CONFIRMED',
         ]);
 
         return redirect()->route('activities.details', ['id' => $new_activity->id]);

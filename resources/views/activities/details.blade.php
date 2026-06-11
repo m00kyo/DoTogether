@@ -237,6 +237,7 @@
                 </div>
             @endif
 
+            
             @if (count($removed_participants) > 0 && $is_owner)
                 <div class="participants">
                     <h2>Wyrzuceni</h2>
@@ -244,14 +245,14 @@
                         <thead>
                             <tr>
                                 <th><i class="fa-solid fa-ban" style="color: #6b7280"></i></th>
-                                <th>UŻYTKOWNIK</th>
+                                <th style="text-align: left;">UŻYTKOWNIK</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($removed_participants as $participant)
-                                <tr>
-                                    <td><i class="fa-solid fa-ban" style="color: #6b7280"></i></td>
-                                    <td class="bold">{{ $participant->nickname }}</td>
+                                <tr style="text-align: left;">
+                                    <td style="text-align: center;"><i class="fa-solid fa-ban" style="color: #6b7280"></i></td>
+                                    <td style="text-align: left;" class="bold">{{ $participant->user->nickname }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

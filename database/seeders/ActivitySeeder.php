@@ -11,6 +11,7 @@ class ActivitySeeder extends Seeder
 {
     public function run(): void
     {
+        $admin = User::where('email', 'admin@dotogether.pl')->first();
         $ania = User::where('email', 'ania@example.pl')->first();
         $marek = User::where('email', 'marek@example.pl')->first();
         $zofia = User::where('email', 'zofia@example.pl')->first();
@@ -91,10 +92,22 @@ class ActivitySeeder extends Seeder
                 'lat' => 52.25570,
                 'long' => 21.03620,
                 'location' => 'Plac Wileński, Warszawa',
-                'max_participants' => 24,
+                'max_participants' => 2,
                 'required_age' => null,
                 'category_id' => $gry->id,
                 'creator_id' => $marek->id,
+            ],
+            [
+                'title' => 'Meetup społeczności DoTogether',
+                'description' => 'Oficjalne spotkanie integracyjne społeczności DoTogether. Poznaj innych użytkowników, podziel się pomysłami i dobrze się baw!',
+                'event_date' => '2026-09-06',
+                'lat' => 52.23194,
+                'long' => 21.00663,
+                'location' => 'Centrum Zarządzania Innowacjami, Warszawa',
+                'max_participants' => 6,
+                'required_age' => null,
+                'category_id' => $kultura->id,
+                'creator_id' => $admin->id,
             ],
         ];
 

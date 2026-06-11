@@ -51,6 +51,46 @@ class UserSeeder extends Seeder
                 'bio'           => null,
                 'role'          => 'USER',
             ],
+            [
+                'nickname'      => 'kasia_m',
+                'email'         => 'kasia@example.pl',
+                'password_hash' => Hash::make('password'),
+                'date_of_birth' => '1997-04-12',
+                'bio'           => 'Fotografka i miłośniczka podróży.',
+                'role'          => 'USER',
+            ],
+            [
+                'nickname'      => 'piotr_n',
+                'email'         => 'piotr@example.pl',
+                'password_hash' => Hash::make('password'),
+                'date_of_birth' => '1991-09-03',
+                'bio'           => 'Fan siatkówki i muzyki jazzowej.',
+                'role'          => 'USER',
+            ],
+            [
+                'nickname'      => 'bartek_s',
+                'email'         => 'bartek@example.pl',
+                'password_hash' => Hash::make('password'),
+                'date_of_birth' => '1999-12-20',
+                'bio'           => 'Programista hobbystycznie zajmujący się grafiką 3D.',
+                'role'          => 'USER',
+            ],
+            [
+                'nickname'      => 'marta_j',
+                'email'         => 'marta@example.pl',
+                'password_hash' => Hash::make('password'),
+                'date_of_birth' => '2001-02-28',
+                'bio'           => 'Studentka architektury, uwielbiam spacery po mieście.',
+                'role'          => 'USER',
+            ],
+            [
+                'nickname'      => 'lukasz_b',
+                'email'         => 'lukasz@example.pl',
+                'password_hash' => Hash::make('password'),
+                'date_of_birth' => '1985-08-17',
+                'bio'           => 'Maratończyk i kucharz amator.',
+                'role'          => 'USER',
+            ],
         ];
 
         foreach ($users as $user) {

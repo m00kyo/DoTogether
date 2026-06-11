@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Participation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ParticipationController extends Controller
 {
@@ -59,55 +58,31 @@ class ParticipationController extends Controller
             abort(400);
         }
 
-        DB::transaction(function () use ($activityId, $userId) {
-            $participation_to_update = Participation::where([
-                ['activity_id', $activityId],
-                ['user_id', $userId],
-            ])->firstOrFail();
+        $participation = Participation::where([
+            ['activity_id', $activityId],
+            ['user_id', $userId],
+        ])->firstOrFail();
 
-            $participation_to_update->status = 'REMOVED';
-            $participation_to_update->cancel_reason = null;
-            $participation_to_update->cancelled_at = null;
-            $participation_to_update->save();
-
-            $waitlisted = Participation::where([
-                ['activity_id', $activityId],
-                ['status', 'WAITLISTED'],
-            ])->orderBy('created_at', 'asc')->first();
-
-            if ($waitlisted) {
-                $waitlisted->status = 'CONFIRMED';
-                $waitlisted->save();
-            }
-        });
+        $participation->status = 'REMOVED';
+        $participation->cancel_reason = null;
+        $participation->cancelled_at = null;
+        $participation->save();
 
         return redirect()->route('activities.details', ['id' => $activityId]);
     }
 
     public function leave($activityId, Request $request)
     {
-        DB::transaction(function () use ($activityId, $request) {
-            $user = auth()->user();
-            $participation = Participation::where([
-                ['activity_id', $activityId],
-                ['user_id', $user->id],
-            ])->firstOrFail();
+        $user = auth()->user();
+        $participation = Participation::where([
+            ['activity_id', $activityId],
+            ['user_id', $user->id],
+        ])->firstOrFail();
 
-            $participation->status = 'CANCELLED';
-            $participation->cancel_reason = $request->cancel_reason;
-            $participation->cancelled_at = now();
-            $participation->save();
-
-            $participation_to_update = Participation::where([
-                ['activity_id', $activityId],
-                ['status', 'WAITLISTED'],
-            ])->orderBy('created_at', 'asc')->first();
-
-            if ($participation_to_update) {
-                $participation_to_update->status = 'CONFIRMED';
-                $participation_to_update->save();
-            }
-        });
+        $participation->status = 'CANCELLED';
+        $participation->cancel_reason = $request->cancel_reason;
+        $participation->cancelled_at = now();
+        $participation->save();
 
         return redirect()->route('activities.details', ['id' => $activityId]);
     }
