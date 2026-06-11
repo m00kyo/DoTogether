@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/details.css')) }}">
     <link rel="stylesheet" href="{{ asset('css/details.css') }}?v={{ filemtime(public_path('css/details.css')) }}">
 @endpush
 @section('content')
@@ -32,7 +32,6 @@
                     </div>
                     <div class="details-section">
                         <h2>Organizator</h2>
-                        <!-- Zgrabny kafelek zamiast rozciągniętego bloku -->
                         <div class="organizer-card">
                             <div class="org-avatar-placeholder">
                                 <i class="fa-solid fa-user"></i>
@@ -44,7 +43,6 @@
                     </div>
 
                     <div class="details-section">
-                        <!-- Nowa, tekstowa lista uczestników -->
                         <h2>Liczba miejsc</h2>
                         <div class="attendees-counter-box">
                             <div class="counter-icon">
@@ -263,13 +261,15 @@
 
         <footer>
             <div class="footer-col">
-                <h4>SpotkajmySię</h4>
-                <p>Najlepsza platforma do organizacji i dołączania do grupowych wyjść i aktywności.</p>
+                <h4>DoTogether</h4>
+                <p>Najlepsza platforma do organizacji, dołączania do grupowych wyjść i aktywności.</p>
             </div>
             <div class="footer-col">
             </div>
-            <div class="footer-col">
-                <a href="{{ route('profile.index') }}">Mój profil</a>
+            <div class="footer-col footer-col-actions">
+                <a href="{{ route('profile.index') }}" class="btn-footer-profile">
+                    <i class="fa-solid fa-circle-user"></i> Mój profil
+                </a>
             </div>
         </footer>
     </div>

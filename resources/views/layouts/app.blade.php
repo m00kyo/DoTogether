@@ -3,6 +3,13 @@
 
 <head>
     <script>
+        (function () {
+            const theme = localStorage.getItem('theme') || 
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <script>
         function zapytajOPowod(event) {
             event.preventDefault();
             let powod = prompt("Wpisz powód rezygnacji (opcjonalnie):");
@@ -26,6 +33,39 @@
 
 <body>
     @yield('content')
+
+    <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Przełącz motyw">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('theme-toggle');
+            const icon = toggleBtn.querySelector('i');
+            
+            function updateIcon(theme) {
+                if (theme === 'dark') {
+                    icon.className = 'fa-solid fa-sun';
+                } else {
+                    icon.className = 'fa-solid fa-moon';
+                }
+            }
+
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            updateIcon(currentTheme);
+
+            toggleBtn.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const target = current === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', target);
+                localStorage.setItem('theme', target);
+                updateIcon(target);
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}?v={{ filemtime(public_path('css/dashboard.css')) }}">
     <style>
         /* Gwarantowane style dla etykiet zgłoszeń */
         .badge-reason {
@@ -62,8 +62,7 @@
                 </div>
                 <div class="dash-user-area">
                     <div class="user-profile">
-                        <span
-                            style="background: var(--text-main); color: white; font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 8px; letter-spacing: 1px;">ADMIN</span>
+                        <span class="admin-badge">ADMIN</span>
                         <span>{{ Auth::user()->username ?? 'Administrator' }}</span>
                     </div>
                 </div>
@@ -74,6 +73,7 @@
                     <span class="card-title">Zgłoszone wydarzenia (Oczekujące akcje)</span>
                 </div>
 
+                <div class="table-scroll-wrapper">
                 <table class="dash-table">
                     <thead>
                         <tr>
@@ -137,6 +137,7 @@
                         @endforelse
                     </tbody>
                 </table>
+                </div>
             </div>
         </main>
     </div>

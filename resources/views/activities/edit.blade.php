@@ -1,22 +1,21 @@
 @extends('layouts.app')
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/activity.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
+    <link rel="stylesheet" href="{{ asset('css/activity.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
 @endpush
 @section('content')
     <div class="app-container">
-        <!-- Nawigacja -->
+     
         <nav class="navbar">
             <div class="logo"><i class="fa-solid fa-users-viewfinder"></i> Do<span>Together</span></div>
             <div class="nav-actions">
-                <!-- Zmieniono link powrotny, aby sugerował powrót do panelu organizatora -->
                 <a href="{{ route('profile.activities') }}" class="btn-text"><i class="fa-solid fa-arrow-left"></i> Wróć do
                     moich
                     wydarzeń</a>
             </div>
         </nav>
 
-        <!-- Główny panel edycji -->
+      
         <main class="add-activity-container">
             <div class="form-header">
                 <h1>Edytuj aktywność</h1>
@@ -27,7 +26,7 @@
                 @csrf
                 @method('PUT')
                 <div class="form-grid">
-                    <!-- LEWA STRONA: Opis i kategoria (wypełniona danymi) -->
+                  
                     <div class="form-section main-info">
                         <div class="input-field">
                             <label for="title">Tytuł aktywności</label>
@@ -55,12 +54,11 @@
                         </div>
                     </div>
 
-                    <!-- PRAWA STRONA: Szczegóły logistyczne (wypełniona danymi) -->
+                  
                     <div class="form-section logistics-info">
                         <div class="row">
                             <div class="input-field">
                                 <label for="date">Data wydarzenia</label>
-                                <!-- Format daty dla input type="date" to YYYY-MM-DD -->
                                 <input type="date" id="date" name="event_date"
                                     value="{{ \Carbon\Carbon::parse($activity->event_date)->format('Y-m-d') }}" required />
                             </div>

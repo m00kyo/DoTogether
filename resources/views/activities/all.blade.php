@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/activity.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
+    <link rel="stylesheet" href="{{ asset('css/activity.css') }}?v={{ filemtime(public_path('css/activity.css')) }}">
 @endpush
 @section('content')
     <div class="app-container">
@@ -184,14 +184,16 @@
         </section>
 
         <footer>
-            <div class="footer-col">
-                <h4>SpotkajmySię</h4>
+           <div class="footer-col">
+                <h4>DoTogether</h4>
                 <p>Najlepsza platforma do organizacji, dołączania do grupowych wyjść i aktywności.</p>
             </div>
             <div class="footer-col">
             </div>
-            <div class="footer-col">
-                <a href="{{ route('profile.index') }}">Mój profil</a>
+            <div class="footer-col footer-col-actions">
+                <a href="{{ route('profile.index') }}" class="btn-footer-profile">
+                    <i class="fa-solid fa-circle-user"></i> Mój profil
+                </a>
             </div>
         </footer>
     </div>

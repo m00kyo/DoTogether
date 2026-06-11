@@ -17,7 +17,6 @@
     color: var(--primary-color);
 }
 
-/* Wielkie zdjęcie w tle */
 .details-hero {
     width: 100%;
     height: 400px;
@@ -33,10 +32,9 @@
     object-fit: cover;
 }
 
-/* Układ dwukolumnowy */
 .details-grid {
     display: grid;
-    grid-template-columns: 2fr 1.1fr; /* Lewa strona szersza, prawa węższa */
+    grid-template-columns: 2fr 1.1fr;
     gap: 48px;
 }
 
@@ -119,7 +117,7 @@
     color: var(--primary-color);
 }
 
-/* Lista Uczestników (Awatary nakładające się na siebie) */
+/* Lista Uczestników */
 .attendees-list {
     display: flex;
     gap: 12px;
@@ -165,7 +163,7 @@
     padding: 32px;
     box-shadow: var(--shadow-md);
     position: sticky;
-    top: 40px; /* Przykleja kartę 40px od góry ekranu podczas scrollowania */
+    top: 40px;
 }
 
 .action-card h3 {
@@ -282,6 +280,7 @@
 .btn-blocked:hover {
     background: #d1d5db;
 }
+
 /* Przycisk edycji wydarzenia */
 .btn-edit-event {
     display: inline-flex;
@@ -309,6 +308,7 @@
     transform: translateY(-2px);
     box-shadow: 0 12px 24px rgba(107, 114, 128, 0.2);
 }
+
 /* Opcje udostępniania i zgłaszania */
 .action-card-footer {
     display: flex;
@@ -335,11 +335,11 @@
 .btn-share:hover {
     color: var(--primary-color);
 }
+
 .btn-report:hover {
     color: #ef4444;
 }
 
-/* RECYKLING PIGUŁEK KATEGORII Z GŁÓWNEGO PLIKU */
 .card-category {
     display: inline-flex;
     align-items: center;
@@ -351,6 +351,7 @@
     color: #ffffff;
     letter-spacing: 0.5px;
 }
+
 .cat-rozrywka {
     background-color: #0ea5e9;
 }
@@ -358,13 +359,15 @@
 /* RWD */
 @media (max-width: 950px) {
     .details-grid {
-        grid-template-columns: 1fr; /* Na tabletach i telefonach jedno pod drugim */
+        grid-template-columns: 1fr;
     }
+
     .details-hero {
         height: 300px;
     }
+
     .action-card {
-        position: static; /* Wyłącza przyklejanie na małych ekranach */
+        position: static;
     }
 
     .participants {
@@ -377,13 +380,14 @@
         font-size: 12px;
     }
 }
+
 /* --- POPRAWIONY WYGLĄD KARTY ORGANIZATORA --- */
 .organizer-card {
-    display: inline-flex; /* Zapobiega rozciąganiu na całą szerokość */
+    display: inline-flex;
     align-items: center;
-    padding: 10px 24px 10px 10px; /* Dopasowane paddingi */
+    padding: 10px 24px 10px 10px;
     border: 1px solid var(--border-color);
-    border-radius: 50px; /* Zaokrąglony kształt pigułki */
+    border-radius: 50px;
     background-color: #ffffff;
     box-shadow: var(--shadow-sm);
     gap: 16px;
@@ -444,7 +448,7 @@
 }
 
 .attendees-text-list li:hover {
-    transform: translateX(4px); /* Delikatny efekt przesunięcia po najechaniu */
+    transform: translateX(4px);
     border-color: var(--primary-color);
 }
 
@@ -459,6 +463,7 @@
     justify-content: center;
     font-size: 13px;
 }
+
 /* --- LICZNIK UCZESTNIKÓW --- */
 .attendees-counter-box {
     display: inline-flex;
@@ -545,7 +550,7 @@
     vertical-align: middle;
 }
 
-/* Pierwsza kolumna (ikona) - zminimalizowana */
+/* Pierwsza kolumna (ikona) */
 .participants .dash-table th:first-child,
 .participants .dash-table td:first-child {
     width: 30px;
@@ -554,21 +559,18 @@
     text-align: center;
 }
 
-/* Kolumna z przyciskiem - wyrównana do prawej */
 .participants .dash-table th:last-child,
 .participants .dash-table td:last-child {
     text-align: right;
     padding-right: 0;
 }
 
-/* Sztywna blokada łamania tekstu dla Daty, Statusu i Akcji */
 .participants .dash-table td:nth-child(3),
 .participants .dash-table td:nth-child(4),
 .participants .dash-table td:nth-child(5) {
     white-space: nowrap;
 }
 
-/* Kolumna z nickiem (bold) */
 .participants .dash-table .bold {
     font-weight: 600;
     line-height: 1.5;
@@ -592,7 +594,6 @@
     color: white;
 }
 
-/* Status badge'i */
 .status-badge {
     display: inline-block;
     padding: 6px 12px;

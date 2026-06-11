@@ -1,15 +1,15 @@
 :root {
-    --primary-color: #0cbae1; /* Żywy turkus */
-    --secondary-color: #ffdb83; /* Butter Honey */
-    --accent-blue: #81cfee; /* Dreamy Blue */
-    --accent-lilac: #aab4e7; /* Silky Lilac */
-    --text-main: #253e57; /* Głęboki granat */
-    --text-muted: #6b829c; /* Zgaszony błękit */
-    --bg-body: #fff2d0; /* Vanilla Milk */
-    --bg-app: #ffffff; /* Białe tło kontenera */
-    --border-color: #ebe3cb; /* Ramki */
+    --primary-color: #0cbae1;
+    --secondary-color: #ffdb83;
+    --accent-blue: #81cfee;
+    --accent-lilac: #aab4e7;
+    --text-main: #253e57;
+    --text-muted: #6b829c;
+    --bg-body: #fff2d0;
+    --bg-app: #ffffff;
+    --border-color: #ebe3cb;
 
-    /* WYRAŹNE GRADIENTY NA PRZYCISKI */
+    /* GRADIENTY NA PRZYCISKI */
     --grad-primary-strong: linear-gradient(135deg, #00a8cc 0%, #3e668f 100%);
     --grad-primary-hover: linear-gradient(135deg, #008ba8 0%, #2c4c6b 100%);
 
@@ -18,7 +18,7 @@
 
     --shadow-sm: 0 4px 6px -1px rgba(37, 62, 87, 0.08);
     --shadow-md: 0 10px 25px rgba(37, 62, 87, 0.12);
-    --shadow-glow: 0 8px 15px rgba(0, 168, 204, 0.35); /* Turkusowa poświata */
+    --shadow-glow: 0 8px 15px rgba(0, 168, 204, 0.35);
 }
 
 body {
@@ -44,7 +44,7 @@ body {
     overflow: hidden;
 }
 
-/* --- LEWA STRONA: Panel z gradientem --- */
+/* --- LEWA STRONA: Panel --- */
 .auth-side {
     flex: 1;
     background: var(--grad-primary-strong);
@@ -215,7 +215,7 @@ body {
     box-shadow: var(--shadow-glow);
 }
 
-/* Separator społecznościowy */
+
 .social-divider {
     display: flex;
     align-items: center;
@@ -234,12 +234,6 @@ body {
 
 .social-divider span {
     padding: 0 12px;
-}
-
-/* Przyciski Google / Facebook */
-.social-buttons {
-    display: flex;
-    gap: 16px;
 }
 
 .btn-social {
@@ -270,7 +264,7 @@ body {
 
 .btn-social i {
     font-size: 18px;
-    color: #1877f2; /* Kolor Facebooka */
+    color: #1877f2;
 }
 
 /* RWD - Responsywność dla urządzeń mobilnych */
@@ -279,18 +273,22 @@ body {
         height: auto;
         padding: 40px 20px;
     }
+
     .auth-container {
         flex-direction: column;
         height: auto;
         width: 100%;
         max-width: 450px;
     }
+
     .auth-side {
         padding: 40px 24px;
     }
+
     .auth-form-box {
         padding: 40px 24px;
     }
+
     .back-home {
         position: relative;
         top: 0;

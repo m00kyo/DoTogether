@@ -43,9 +43,11 @@
     .form-grid {
         flex-direction: row;
     }
+
     .main-info {
         flex: 1.2;
     }
+
     .logistics-info {
         flex: 1;
         display: flex;
@@ -149,29 +151,36 @@
     .add-activity-container {
         padding: 40px 20px;
     }
+
     .activity-form {
         padding: 24px;
     }
+
     .row {
         flex-direction: column;
         gap: 20px;
     }
 }
+
 .filters-section {
     margin-top: 40px;
 }
+
 .listings-header {
     margin-bottom: 32px;
     color: var(--text-main);
     font-size: 24px;
     font-weight: 700;
 }
+
 .location-container {
     position: relative;
+
     input {
         width: 100%;
     }
 }
+
 .autocomplete_loc {
     position: absolute;
     top: 100%;
@@ -183,14 +192,17 @@
     max-height: 150px;
     overflow-y: auto;
     z-index: 10;
+
     .autocomplete-option {
         padding: 10px 16px;
         cursor: pointer;
+
         &:hover {
             background: var(--bg-hover);
         }
     }
 }
+
 /* --- IDEALNA KARTA WYDARZENIA --- */
 
 /* Główny kontener karty */
@@ -200,7 +212,8 @@
     background: #ffffff;
     border-radius: 20px;
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(37, 62, 87, 0.05); /* Miękki, nowoczesny cień */
+    box-shadow: 0 4px 15px rgba(37, 62, 87, 0.05);
+    /* Miękki, nowoczesny cień */
     overflow: hidden;
     transition:
         transform 0.3s ease,
@@ -216,7 +229,8 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Wypycha stopkę na dół */
+    flex-grow: 1;
+    /* Wypycha stopkę na dół */
 }
 
 /* 1. Data i Lokalizacja (Siatka odporna na długi tekst) */
@@ -229,7 +243,8 @@
 
 .meta-item {
     display: flex;
-    align-items: flex-start; /* Zatrzymuje ikonę na górze, gdy tekst schodzi niżej */
+    align-items: flex-start;
+    /* Zatrzymuje ikonę na górze, gdy tekst schodzi niżej */
     gap: 8px;
     font-size: 13px;
     color: var(--text-muted);
@@ -237,9 +252,11 @@
 }
 
 .meta-item i {
-    flex-shrink: 0; /* ZABEZPIECZENIE: Ikona NIGDY nie zostanie zgnieciona przez tekst */
+    flex-shrink: 0;
+    /* ZABEZPIECZENIE: Ikona NIGDY nie zostanie zgnieciona przez tekst */
     margin-top: 2px;
-    color: var(--accent-blue); /* Lepszy kolor dla ikon logistycznych */
+    color: var(--accent-blue);
+    /* Lepszy kolor dla ikon logistycznych */
 }
 
 .meta-item span {
@@ -260,7 +277,8 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: auto; /* Wypycha resztę zawartości (stopkę) na dół */
+    margin-bottom: auto;
+    /* Wypycha resztę zawartości (stopkę) na dół */
     padding-bottom: 16px;
 }
 
@@ -278,7 +296,8 @@
     font-weight: 700;
     text-transform: uppercase;
     padding: 6px 14px;
-    border-radius: 50px; /* Idealna pigułka */
+    border-radius: 50px;
+    /* Idealna pigułka */
     color: white;
     letter-spacing: 0.5px;
     margin: 0;

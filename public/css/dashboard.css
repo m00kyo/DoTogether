@@ -272,16 +272,24 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
+.dash-table tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dash-table tbody tr:last-child {
+    border-bottom: none;
+}
+
 .dash-table td {
     padding: 16px 12px;
     font-size: 14px;
     color: var(--text-main);
     font-weight: 500;
-    border-bottom: 1px solid var(--border-color);
-    vertical-align: middle; /* Wyrównuje wszystko ładnie do środka w pionie */
+    border-bottom: none;
+    vertical-align: middle;
 }
 
-/* Pierwsza kolumna (ikona statusu) - zminimalizowana */
+/* Pierwsza kolumna (ikona statusu) */
 .dash-table th:first-child,
 .dash-table td:first-child {
     padding-left: 0;
@@ -296,7 +304,6 @@ body {
     padding-right: 0;
 }
 
-/* Sztywna blokada łamania tekstu dla Daty, Kategorii i Akcji */
 .dash-table td:nth-child(3),
 .dash-table td:nth-child(4),
 .dash-table td:nth-child(5) {
@@ -305,12 +312,7 @@ body {
 
 .dash-table .bold {
     font-weight: 600;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 6px;
-    padding-top: 23px;
-    padding-bottom: 23px;
+    vertical-align: middle;
 }
 
 .status-full {
@@ -318,7 +320,13 @@ body {
     font-weight: 600;
 }
 
-/* Podstawowy przycisk akcji w tabeli */
+.td-truncate {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .btn-table-action {
     background: #e0f2fe;
     color: #0284c7;
@@ -336,7 +344,6 @@ body {
     color: white;
 }
 
-/* Styl dla przycisku rezygnacji (Czerwony motyw) */
 .btn-table-action.btn-resign {
     background: #fee2e2;
     color: #ef4444;
@@ -362,7 +369,7 @@ body {
     border-radius: 12px;
     white-space: nowrap;
     margin-left: 8px;
-    vertical-align: text-bottom; /* Idealne zrównanie z tekstem obok */
+    vertical-align: text-bottom;
 }
 
 /* --- ZAKŁADKA MOJE DANE --- */
@@ -445,7 +452,6 @@ body {
     color: var(--text-main);
 }
 
-/* --- BANER CTA --- */
 .dash-banner {
     background: var(--grad-primary-strong);
     border-radius: 24px;
@@ -524,6 +530,7 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
 /* --- FORMULARZ EDYCJI PROFILU (MOJE DANE) --- */
 .profile-form {
     display: flex;
@@ -611,6 +618,7 @@ body {
 .btn-outline-sm:hover {
     background: #fdfbf7;
 }
+
 /* --- STYLE DLA PANELU ADMINISTRATORA --- */
 
 .admin-grid {
@@ -619,22 +627,24 @@ body {
     gap: 24px;
 }
 
-/* Dostosowanie szerokości kolumn w tabelach admina */
 .admin-table th:nth-child(1),
 .admin-table td:nth-child(1) {
     width: 25%;
     text-align: left;
 }
+
 .admin-table th:nth-child(2),
 .admin-table td:nth-child(2) {
     width: 40%;
     white-space: normal;
 }
+
 .admin-table th:nth-child(3),
 .admin-table td:nth-child(3) {
     width: 15%;
     white-space: nowrap;
 }
+
 .admin-table th:nth-child(4),
 .admin-table td:nth-child(4) {
     width: 20%;
@@ -678,7 +688,6 @@ body {
     color: #ef4444;
 }
 
-/* Specjalny przycisk "Odbanuj" */
 .btn-table-action.btn-success {
     background: #d1fae5;
     color: #059669;
@@ -699,6 +708,7 @@ body {
     border-radius: 8px;
     letter-spacing: 1px;
 }
+
 /* --- FORMULARZ EDYCJI PROFILU --- */
 .profile-edit-form {
     display: flex;
@@ -739,14 +749,13 @@ body {
 .profile-edit-form .form-group input:focus,
 .profile-edit-form .form-group textarea:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(12, 186, 225, 0.1); /* Delikatna poświata przy kliknięciu (focus) */
+    box-shadow: 0 0 0 3px rgba(12, 186, 225, 0.1);
 }
 
 .profile-edit-form .form-group textarea {
     resize: vertical;
 }
 
-/* Przyciski formularza */
 .btn-save-profile {
     background: var(--grad-primary-strong);
     color: #ffffff;
@@ -786,7 +795,8 @@ body {
     background: #f4f0e6;
     color: var(--text-main);
 }
-/* --- FORMULARZ EDYCJI PROFILU (MOJE DANE) --- */
+
+/* --- FORMULARZ EDYCJI PROFILU --- */
 
 .profile-edit-form {
     display: flex;
@@ -874,4 +884,100 @@ body {
     background: #fdfbf7;
     color: var(--text-main);
     border-color: #d1c8b3;
+}
+
+/* --- Wrapper do przewijania tabelek w poziomie --- */
+.table-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-scroll-wrapper .dash-table {
+    min-width: 680px;
+    width: 100%;
+}
+
+/* --- STYLE RESPONDOWE (RWD PANELU UŻYTKOWNIKA) --- */
+@media (max-width: 992px) {
+    body {
+        height: auto !important;
+        min-height: 100vh;
+        display: block !important;
+        padding: 16px 8px !important;
+    }
+
+    .dashboard-layout {
+        flex-direction: column;
+        height: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 16px;
+        box-shadow: none;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 24px 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar .logo {
+        margin-bottom: 20px;
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .sidebar-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .sidebar-menu a {
+        padding: 10px 16px;
+        font-size: 13px;
+        border-radius: 12px;
+    }
+
+    .main-dashboard {
+        padding: 24px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dash-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .small-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dash-card {
+        min-width: 500px;
+        padding: 16px;
+        overflow-x: auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dash-table {
+        display: table !important;
+        width: 100%;
+        min-width: 650px;
+        border-collapse: collapse;
+    }
+
+    .dash-table th,
+    .dash-table td {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
 }

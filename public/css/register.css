@@ -8,7 +8,7 @@ body {
   justify-content: center;
   height: 100vh;
   background-color: var(--bg-body);
-  font-family: "Inter", sans-serif; /* Spójna czcionka */
+  font-family: "Inter", sans-serif;
   position: relative;
 }
 
@@ -221,6 +221,7 @@ form {
 .btn-social img {
   width: 18px;
 }
+
 .btn-social i {
   font-size: 18px;
   color: #1877f2;
@@ -231,18 +232,22 @@ form {
     height: auto;
     padding: 40px 20px;
   }
+
   .auth-container {
     flex-direction: column;
     height: auto;
     width: 100%;
     max-width: 450px;
   }
+
   .auth-side {
     padding: 40px 24px;
   }
+
   .auth-form-box {
     padding: 40px 24px;
   }
+
   .back-home {
     position: relative;
     top: 0;

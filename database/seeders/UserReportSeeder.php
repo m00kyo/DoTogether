@@ -10,7 +10,7 @@ class UserReportSeeder extends Seeder
 {
     public function run(): void
     {
-        $ania  = User::where('email', 'ania@example.pl')->first();
+        $ania = User::where('email', 'ania@example.pl')->first();
         $marek = User::where('email', 'marek@example.pl')->first();
         $tomek = User::where('email', 'tomek@example.pl')->first();
 
@@ -18,12 +18,12 @@ class UserReportSeeder extends Seeder
             [
                 'reporter_id' => $ania->id,
                 'reported_id' => $tomek->id,
-                'reason'      => 'Użytkownik zachowuje się nieodpowiednio na wydarzeniach.',
+                'reason' => 'Użytkownik zachowuje się nieodpowiednio na wydarzeniach.',
             ],
             [
                 'reporter_id' => $marek->id,
                 'reported_id' => $tomek->id,
-                'reason'      => 'Podejrzane aktywność konta — spam w komentarzach.',
+                'reason' => 'Podejrzane aktywność konta.',
             ],
         ];
 

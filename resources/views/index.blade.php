@@ -1,14 +1,12 @@
 @extends('layouts.app')
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
 @endpush
 @section('content')
     <div class="app-container">
         <nav class="navbar">
             <div class="logo"><i class="fa-solid fa-users-viewfinder"></i> Do<span>Together</span></div>
-            <ul class="nav-links">
-                <!-- TU USUNELAM Z MENU RZECZY BO WSM PASUJE MI BARDZIEJ TAK-->
-            </ul>
+           
             <div class="nav-actions">
                 @guest
                     <a href="{{ route('login') }}" class="btn-text">Zaloguj</a>
@@ -45,13 +43,15 @@
         </header>
         <footer>
             <div class="footer-col">
-                <h4>SpotkajmySię</h4>
+                <h4>DoTogether</h4>
                 <p>Najlepsza platforma do organizacji, dołączania do grupowych wyjść i aktywności.</p>
             </div>
             <div class="footer-col">
             </div>
-            <div class="footer-col">
-                <a href="{{ route('profile.index') }}">Mój profil</a>
+            <div class="footer-col footer-col-actions">
+                <a href="{{ route('profile.index') }}" class="btn-footer-profile">
+                    <i class="fa-solid fa-circle-user"></i> MÓJ PROFIL
+                </a>
             </div>
         </footer>
     </div>

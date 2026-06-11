@@ -24,8 +24,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 Route::middleware('auth')->group(function () {
     Route::get('/activities', [ActivityController::class, 'index'])->name('activities.index');
     Route::get('/activities/create', [ActivityController::class, 'create'])->name('activities.create');
-    
-    // UUID constraints added to {id} route parameters below
+
     Route::get('/activities/{id}', [ActivityController::class, 'details'])->name('activities.details')->whereUuid('id');
     Route::get('/activities/{id}/edit', [ActivityController::class, 'edit'])->name('activities.edit')->whereUuid('id');
 
@@ -45,16 +44,15 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    // Note: If activityId or userId are UUIDs, you can optionally chain ->whereUuid() here too
     Route::post('/activities/{activityId}/join', [ParticipationController::class, 'join'])->name('activities.join');
     Route::delete('/activities/{activityId}/remove/{userId}', [ParticipationController::class, 'remove'])->name('activities.remove');
     Route::delete('/activities/{activityId}/leave', [ParticipationController::class, 'leave'])->name('activities.leave');
     Route::post('/activities/{activityId}/report-user/{userId}', [ReportController::class, 'report_user'])->name('report.user');
-});
-
-Route::middleware('auth')->group(function () {
     Route::post('/activities/{activityId}/report', [ReportController::class, 'report_activity'])->name('report.activity');
     Route::post('/activities/{activityId}/report/{userId}', [ReportController::class, 'report_user'])->name('report.user');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/profile/user-reports', [ReportController::class, 'user_reports'])->name('profile.user_reports');
     Route::get('/profile/activity-reports', [ReportController::class, 'activity_reports'])->name('profile.activity_reports');
 

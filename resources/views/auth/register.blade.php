@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
 @endpush
 @section('content')
     <a href="{{ route('index') }}" class="back-home"> <i class="fa-solid fa-arrow-left"></i> Wróć do strony głównej </a>
