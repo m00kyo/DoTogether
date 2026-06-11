@@ -427,3 +427,9 @@ Administrator może usunąć aktywność przez panel zgłoszeń: `POST /report/a
 | Dołączanie / opuszczanie | ❌ | ✅ |
 | Panel profilu | ❌ | ✅ |
 | Panel administratora | ❌ | ✅ (tylko ADMIN) |
+### Potencjał na optymalizację
+
+- **Cache'owanie** — wyniki filtrowania listy aktywności mogą być cache'owane (Redis), szczególnie obliczenia odległości geograficznych (`earthdistance`)
+- **Interfejs moderatora** — dodanie interfejsu head moderatora, gdzie mógłby dodawać nowych adminiów
+- **Lazy loading** — ładowanie uczestników i szczegółów aktywności na żądanie (AJAX) zamiast przy każdym wczytaniu strony
+- **Paginacja** — przy dużej liczbie aktywności zastąpienie obecnego podejścia paginacją lub infinite scroll
