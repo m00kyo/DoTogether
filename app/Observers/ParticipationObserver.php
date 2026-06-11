@@ -7,10 +7,6 @@ use App\Models\Participation;
 
 class ParticipationObserver
 {
-    /**
-     * Promuje pierwszą osobę z WAITLISTED → CONFIRMED
-     * gdy zwolni się miejsce w aktywności.
-     */
     private function promoteFromWaitlist(string $activityId): void
     {
         $activity = Activity::findOrFail($activityId);
@@ -38,11 +34,6 @@ class ParticipationObserver
         }
     }
 
-    /**
-     * Reaguje na zmianę statusu (CANCELLED / REMOVED).
-     * Sprawdzamy poprzednią wartość statusu, żeby awansować tylko gdy
-     * faktycznie zwalnia się potwierdzone miejsce.
-     */
     public function updated(Participation $participation): void
     {
         $previousStatus = $participation->getOriginal('status');
@@ -56,10 +47,6 @@ class ParticipationObserver
         }
     }
 
-    /**
-     * Reaguje na fizyczne usunięcie rekordu (np. ban użytkownika).
-     * Awansujemy tylko gdy usunięty rekord był CONFIRMED.
-     */
     public function deleted(Participation $participation): void
     {
         if ($participation->status === 'CONFIRMED') {
