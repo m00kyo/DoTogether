@@ -213,46 +213,7 @@ Każde zgłoszenie zawiera: zgłaszany użytkownik, zgłaszający, powód. Admin
 
 ## Model bazy danych
 
-```
-┌──────────────┐       ┌─────────────────┐       ┌──────────────┐
-│    users     │       │   activities    │       │  categories  │
-│──────────────│       │─────────────────│       │──────────────│
-│ id (uuid) PK │──┐    │ id (uuid) PK    │──┐    │ id (uuid) PK │
-│ nickname     │  │    │ title           │  │    │ name         │
-│ email        │  └───>│ creator_id (FK) │  │    └──────────────┘
-│ password_hash│       │ category_id(FK) │<─┘
-│ date_of_birth│       │ description     │       
-│ bio          │       │ event_date      │       
-│ role         │       │ lat / long      │       
-│ created_at   │       │ location        │       
-└──────┬───────┘       │ max_participants│       
-       │               │ required_age   │       
-       │               └────────┬────────┘       
-       │                        │
-       │    ┌───────────────────┘
-       │    │
-       │  ┌─▼──────────────────┐
-       │  │   participations   │
-       │  │────────────────────│
-       │  │ id (uuid) PK       │
-       └─>│ user_id (FK)       │
-          │ activity_id (FK)   │
-          │ status             │
-          │ cancel_reason      │
-          │ cancelled_at       │
-          │ created_at         │
-          │ updated_at         │
-          └────────────────────┘
-
-┌─────────────────────┐       ┌─────────────────────┐
-│   user_reports      │       │  activity_reports   │
-│─────────────────────│       │─────────────────────│
-│ id (uuid) PK        │       │ id (uuid) PK        │
-│ reporter_id (FK)    │       │ reporter_id (FK)    │
-│ reported_id (FK)    │       │ activity_id (FK)    │
-│ reason              │       │ reason              │
-└─────────────────────┘       └─────────────────────┘
-```
+![Diagram bazy danych](images/database.png)
 
 ### Tabela: `users`
 
@@ -426,12 +387,12 @@ Formularz zawiera następujące pola z walidacją:
 | Tytuł | text | required, string, max:155 | required, maxlength |
 | Opis | textarea | required, string | required |
 | Data wydarzenia | date | required, date | required, type=date |
-| Lokalizacja | map picker + text | nullable, string | — |
-| Max. uczestników | number | required, integer, min:1 | required, min=1 |
+| Lokalizacja | text | nullable, string | — |
+| Max. uczestników | number | required, integer, min:2 | required, min=1 |
 | Kategoria | select (z bazy) | nullable | — |
 | Ograniczenie wiekowe | select | string | — |
 
-Lokalizacja wybierana jest przez **interaktywną mapę** (Leaflet.js) — użytkownik klika pin na mapie, a współrzędne (lat/long) oraz adres są uzupełniane automatycznie. Twórca jest automatycznie dodawany jako uczestnik ze statusem `CONFIRMED`.
+Lokalizacja wybierana jest przez wpisanie, a współrzędne (lat/long) oraz adres są uzupełniane automatycznie. Twórca jest automatycznie dodawany jako uczestnik ze statusem `CONFIRMED`.
 
 ### READ – Lista aktywności
 

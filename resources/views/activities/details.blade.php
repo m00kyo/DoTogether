@@ -171,7 +171,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($owner_id != $participant->user_id)
+                                    @if ($user->id !== $participant->user_id)
                                         <form
                                             action="{{ route('report.user', ['activityId' => $activity->id, 'userId' => $participant->user_id]) }}"
                                             method="POST" onsubmit="return reportUser(event)"

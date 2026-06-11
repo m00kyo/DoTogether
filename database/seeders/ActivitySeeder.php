@@ -104,7 +104,7 @@ class ActivitySeeder extends Seeder
                 'lat' => 52.23194,
                 'long' => 21.00663,
                 'location' => 'Centrum Zarządzania Innowacjami, Warszawa',
-                'max_participants' => 6,
+                'max_participants' => 4,
                 'required_age' => null,
                 'category_id' => $kultura->id,
                 'creator_id' => $admin->id,

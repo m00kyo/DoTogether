@@ -74,6 +74,10 @@ class ParticipationController extends Controller
     public function leave($activityId, Request $request)
     {
         $user = auth()->user();
+        $activity = Activity::findOrFail($activityId);
+        if ($activity->creator_id == $user->id) {
+            abort(400);
+        }
         $participation = Participation::where([
             ['activity_id', $activityId],
             ['user_id', $user->id],

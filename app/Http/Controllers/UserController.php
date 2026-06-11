@@ -21,7 +21,7 @@ class UserController extends Controller
         $request->validate([
             'nickname' => 'required|string|max:255|unique:users,nickname,'.$user->id,
             'email' => 'required|email|max:255',
-            'date_of_birth' => 'required|date',
+            'date_of_birth' => 'required|date|before_or_equal:today',
             'bio' => 'nullable|string|max:1000',
         ]);
 
@@ -57,7 +57,10 @@ class UserController extends Controller
     public function participations()
     {
         $user = auth()->user();
-        $activities = $user->joined_activities()->where('status', ['CONFIRMED', 'WAITLISTED'])->get();
+        $activities = $user->joined_activities()
+            ->whereIn('status', ['CONFIRMED', 'WAITLISTED'])
+            ->where('creator_id', '!=', $user->id)
+            ->get();
         $isAdmin = $user->role === 'ADMIN';
 
         return view('users.participations', compact('activities', 'isAdmin'));

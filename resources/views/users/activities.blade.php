@@ -67,9 +67,11 @@
                             <tr>
                                 <td><i class="fa-solid fa-star" style="color: #f59e0b"></i></td>
                                 <td>
-                                    {{ $activity->title }}</td>
+                                    <a style="text-decoration: none; color: inherit;" href="{{ route('activities.details', $activity->id) }}">{{ $activity->title }}</a>
+                                </td>
                                 <td>{{ \Carbon\Carbon::parse($activity->event_date)->format('d M Y') }}</td>
-                                <td>{{ $activity->participants_count }}/{{ $activity->max_participants }} miejsc</td>
+                                <td>{{ $activity->participants()->where('status', 'CONFIRMED')->count() }}/{{ $activity->max_participants }}
+                                    osób</td>
 
                                 <td>
                                     <form action="{{ route('activities.delete', $activity->id) }}" method="POST"

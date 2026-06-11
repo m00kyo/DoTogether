@@ -124,7 +124,9 @@ class ActivityController extends Controller
 
         $owner_id = $activity->creator_id;
 
-        return view('activities.details', compact('activity', 'my_participation', 'is_owner', 'active_button', 'participants', 'cancelled_participants', 'removed_participants', 'owner_id'));
+        $user = Auth::user();
+
+        return view('activities.details', compact('activity', 'my_participation', 'is_owner', 'active_button', 'participants', 'cancelled_participants', 'removed_participants', 'owner_id', 'user'));
     }
 
     public function create()
@@ -181,10 +183,10 @@ class ActivityController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:155'],
             'description' => ['required', 'string'],
-            'event_date' => ['required', 'date'],
+            'event_date' => ['required', 'date', 'after_or_equal:today'],
             'lat' => ['required', 'numeric'],
             'long' => ['required', 'numeric'],
-            'max_participants' => ['required', 'integer', 'min:1'],
+            'max_participants' => ['required', 'integer', 'min:2', 'max:100'],
             'category_id' => ['nullable', 'string'],
             'required_age' => ['string'],
             'location' => ['nullable', 'string'],

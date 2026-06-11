@@ -64,7 +64,7 @@
                             <tr>
                                 <td><i class="fa-solid fa-check" style="color: #10b981"></i></td>
                                 <td>
-                                    {{ $activity->title }}
+                                    <a style="text-decoration: none; color: inherit;" href="{{ route('activities.details', $activity->id) }}">{{ $activity->title }}</a>
                                 </td>
                                 <td>{{ \Carbon\Carbon::parse($activity->event_date)->format('d M Y') }}</td>
                                 <td>{{ $activity->category->name }}</td>
