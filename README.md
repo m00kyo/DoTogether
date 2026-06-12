@@ -144,7 +144,7 @@ Zalogowany użytkownik może stworzyć własne wydarzenie (`/activities/create`)
 - **Tytuł** — wymagany, max. 155 znaków
 - **Opis** — wymagany
 - **Data wydarzenia** — wymagana
-- **Lokalizacja** — wybór przez mapę (interaktywny pin) lub wpisanie adresu
+- **Lokalizacja** — wybór poprzez wpisanie adresu
 - **Maksymalna liczba uczestników** — wymagana, min. 1
 - **Kategoria** — wybór z listy
 - **Ograniczenie wiekowe** — Brak / Dzieci / 18+ / 40+
